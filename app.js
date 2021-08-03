@@ -1,5 +1,10 @@
-const {films , numFilms} = require('./films');
+const http = require("http");
+const port = process.env.PORT || 5000;
 
-films.forEach(film => console.log(film));
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html");
+    res.end("<h1>Hello, World!</h1>");
+});
 
-console.log(`De momento, estas ${numFilms} son mis películas favoritas`);
+server.listen(port, () => console.log(`Server running at port ${port}`));
