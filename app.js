@@ -1,2 +1,5 @@
-const films = ['Cerdos y diamentes', 'Un ciudadano ejemplar', 'Perdida' , '¿Tenía que ser él?']
+const {films , numFilms} = require('./films');
+
 films.forEach(film => console.log(film));
+
+console.log(`De momento, estas ${numFilms} son mis películas favoritas`);
