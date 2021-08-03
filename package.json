@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/SantDani/nodejs-mid/issues"
   },
-  "homepage": "https://github.com/SantDani/nodejs-mid#readme"
+  "homepage": "https://github.com/SantDani/nodejs-mid#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
