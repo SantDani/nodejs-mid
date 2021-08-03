@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-mid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "up": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SantDani/nodejs-mid.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SantDani/nodejs-mid/issues"
+  },
+  "homepage": "https://github.com/SantDani/nodejs-mid#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
