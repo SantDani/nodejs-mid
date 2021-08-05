@@ -1,17 +1,19 @@
 const express = require('express');
 const {response} = require("express");
 const app = express();
-const port = 5000;
+const port = 3000;
 
-// Templates - EJS
+// Main Templates - EJS
 app.set('view engine', 'ejs');
-app.set('view', __dirname + '/views');
+app.set('views', __dirname + '/views');
 
+app.use(express.static(__dirname + 'films'));
 // Routing
 // The order is important.
 app.get('/',
     (req, res) => {
-    res.render('index', {title: 'index EJS'});
+    res.render('index.ejs', {title: 'index EJS'});
+        console.log('Connect someone to page');
     });
 
 
