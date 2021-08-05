@@ -1,25 +1,28 @@
 const express = require('express');
 const {response} = require("express");
-const path = require("path");
 const app = express();
 const port = 5000;
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/',
-    (req, res) => {
-    res.status(200).sendFile(__dirname + '/films/index.html');
-    });
+// Templates - EJS
+app.set('view engine', 'ejs');
+app.set('view', __dirname + '/views');
 
 // Routing
 // The order is important.
-app.get('/url-code',
+app.get('/',
     (req, res) => {
-        res.send(`Esta es la ruta en al que se ejecuta el codigo ${__dirname} `);
+    res.render('index', {title: 'index EJS'});
+    });
+
+
+
+app.get('/about',
+    (req, res) => {
+        res.render('about', {title: 'About EJS'});
     });
 
 app.use((req, res, next) => {
-   res.status(404).sendFile(__dirname + '/films/404.html')
+   res.status(404).render( '404',{title: 'Page not found 404'});
 });
 
 app.listen(port, ()=> console.log(`Express is listening at http://localhost/${port}`));
