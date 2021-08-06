@@ -10,11 +10,7 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 // Routing
 // The order is important.
-app.get('/', (req, res) => {
-        res.render('index', {title: 'index EJS '});
-    console.log('Someone is connect to Homepage / Default');
-
-    });
+app.get('/', require('./router/routerPaths'));
 
 app.get('/nosotros', (req, res) => {
         res.render('about', {title: 'Nosotros EJS'});
