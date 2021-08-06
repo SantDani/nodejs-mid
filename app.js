@@ -32,6 +32,6 @@ app.use((req, res, next) => {
    res.status(404).render( '404',{title: 'Page not found 404'});
 });
 
-app.listen(PORT, ()=> console.log(`Express is listening at http://localhost/${PORT}`));
+app.listen(PORT, ()=> console.log(`Express is listening at http://localhost:${PORT}`));
 
 
