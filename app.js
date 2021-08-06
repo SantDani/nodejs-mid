@@ -7,20 +7,25 @@ const port = 3000;
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
-app.use(express.static(__dirname + 'films'));
+// app.use(express.static(__dirname + 'films'));
 // Routing
 // The order is important.
-app.get('/',
-    (req, res) => {
-    res.render('index.ejs', {title: 'index EJS'});
-        console.log('Connect someone to page');
+app.get('/', (req, res) => {
+        res.render('index', {title: 'index EJS'});
+    console.log('Someone is connect to Homepage / Default');
+
     });
 
+app.get('/nosotros', (req, res) => {
+        res.render('about', {title: 'Nosotros EJS'});
+    console.log('Someone is connect to about');
+    });
 
+app.get('/contacto', (req, res) => {
 
-app.get('/about',
-    (req, res) => {
-        res.render('about', {title: 'About EJS'});
+    res.render('contact', {title: 'Contacto EJS'});
+    console.log('Someone is connect to Contact');
+
     });
 
 app.use((req, res, next) => {
