@@ -1,7 +1,7 @@
 const express = require('express');
 const {response} = require("express");
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Main Templates - EJS
 app.set('view engine', 'ejs');
@@ -32,6 +32,6 @@ app.use((req, res, next) => {
    res.status(404).render( '404',{title: 'Page not found 404'});
 });
 
-app.listen(port, ()=> console.log(`Express is listening at http://localhost/${port}`));
+app.listen(PORT, ()=> console.log(`Express is listening at http://localhost/${PORT}`));
 
 
