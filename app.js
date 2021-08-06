@@ -7,11 +7,11 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
-// app.use(express.static(__dirname + 'films'));
+app.use(express.static(__dirname + '/public'));
 // Routing
 // The order is important.
 app.get('/', (req, res) => {
-        res.render('index', {title: 'index EJS'});
+        res.render('index', {title: 'index EJS '});
     console.log('Someone is connect to Homepage / Default');
 
     });
@@ -32,7 +32,7 @@ app.use((req, res, next) => {
    res.status(404).render( '404',{title: 'Page not found 404'});
 });
 
-app.listen(PORT, ()=> console.log(`Express is listening at http://localhost/${PORT}`));
+app.listen(PORT, ()=> console.log(`Express is listening at http://localhost:${PORT}`));
 
 // https://nodejs-mid.herokuapp.com/
 
