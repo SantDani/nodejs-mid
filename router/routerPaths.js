@@ -7,6 +7,13 @@ router.get('/', async (request, response) => {
 
 });
 
+router.get('/films', async (request, response) => {
+    let films = []
+    response.render('films', {listFilms: 'HERE list films', films});
+    console.log('Someone is connect to films');
+
+});
+
 router.get('/nosotros', (req, res) => {
     res.render('about', {title: 'Nosotros EJS'});
     console.log('Someone is connect to about');

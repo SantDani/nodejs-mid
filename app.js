@@ -31,7 +31,7 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 // Routing
 // The order is important.
-app.use('/films', require('./router/films'));
+// app.use('/films', require('./router/films'));
 app.use('/', require('./router/routerPaths'));
 
 
