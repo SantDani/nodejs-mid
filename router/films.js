@@ -9,7 +9,7 @@ router.get('/', async (request, response) => {
         const films = await Film.find();
         console.log(films);
 
-        response.render('films', {listFilms: 'HERE list films'});
+        response.render('films', {listFilms: 'HERE list films', films});
     } catch (e) {
         console.log(e);
     }
