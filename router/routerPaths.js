@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Film = require('./../models/film');
 
 router.get('/', async (request, response) => {
    response.render('index', {title : 'Title Home'});
@@ -9,7 +10,18 @@ router.get('/', async (request, response) => {
 
 router.get('/films', async (request, response) => {
     let films = []
-    response.render('films', {listFilms: 'HERE list films', films});
+    // response.render('films', {listFilms: 'HERE list films', films});
+
+    try {
+        const films = await Film.find();
+        console.log(films);
+
+        response.render('films', {listFilms: 'HERE list films', films});
+    } catch (e) {
+        console.log(e);
+        response.render('films', {listFilms: 'HERE list films', films});
+    }
+
     console.log('Someone is connect to films');
 
 });
