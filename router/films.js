@@ -3,17 +3,14 @@ const router = express.Router();
 
 const Film = require('./../models/film');
 
-router.get('/films', (request, response) =>{
-    // response.render('films', {listFilms: 'HERE list films'});
-
+router.get('/', async (request, response) => {
+    
     try {
         // const films = await Film.find();
         // console.log(films);
 
-        response.render('films', {
-            listFilms: ' List films'
-        });
-    }catch (e){
+        response.render('films', {listFilms: 'HERE list films'});
+    } catch (e) {
         console.log(e);
     }
 });
