@@ -7,19 +7,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
-// let file = fs.readFileSync('user-mongodb.json');
-// let dataUser = JSON.parse(file);
-// console.log(process.env.USER);
-// console.log(process.env.PASSWORD);
-// console.log(process.env.DBNAME);
-// console.log(process.env.PORT);
-// const userAdmin = dataUser.user;
-// const password = dataUser.password;
-// const dbName = dataUser.dbName;
-
-
-
-
 // Main Templates - EJS
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
