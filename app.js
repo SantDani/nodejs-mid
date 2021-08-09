@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
-
+const {response} = require("express");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,6 +22,8 @@ mongoose.connect(uri, {useNewUrlParser: true , useUnifiedTopology: true})
 
 
 
+
+
 // Main Templates - EJS
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -30,6 +32,7 @@ app.use(express.static(__dirname + '/public'));
 // Routing
 // The order is important.
 app.use('/', require('./router/routerPaths'));
+app.use('/films', require('./router/films'))
 
 app.listen(PORT, ()=> console.log(`Express is listening at http://localhost:${PORT}`));
 

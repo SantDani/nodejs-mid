@@ -1,9 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (request, response) => {
-   response.render('index', {title : 'Title Home'});
-    console.log('Someone is connect to Home');
+router.get('/', async (request, response) => {
+   /*response.render('index', {title : 'Title Home'});
+    console.log('Someone is connect to Home');*/
+    try {
+        const films = await Film.find();
+        console.log(films);
+        response.render('films', {
+            listFilms: ' List films' , films
+        });
+    }catch (e){
+        console.log(e);
+    }
 });
 
 router.get('/nosotros', (req, res) => {

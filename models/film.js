@@ -3,11 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const filmSchema = new Schema({
     title: String,
-    year: "number",
-    genre: []
+    description: String
 });
 
 //Create model
-const Film = mongoose.model('Film', filmShema);
+const Film = mongoose.model('Film', filmSchema);
 
 module.exports = Film;
