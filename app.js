@@ -31,8 +31,9 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 // Routing
 // The order is important.
+app.use('/films', require('./router/films'));
 app.use('/', require('./router/routerPaths'));
-app.use('/films', require('./router/films'))
+
 
 app.listen(PORT, ()=> console.log(`Express is listening at http://localhost:${PORT}`));
 

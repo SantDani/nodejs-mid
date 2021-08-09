@@ -1,5 +1,12 @@
-<%- include("template/cabecera", {tituloWeb: 'Mascotas'}) %>
+<%- include("./../template/header", {titleWeb: 'Films'}) %>
 
-<h1><%= listFilms %></h1>
+<body class="container-fluid p-0  background-default text-white ">
+<%- include('./../template/navbar'); %>
 
-<%- include("template/footer") %>
+<div class="d-flex justify-content-center  ">
+    <h1><%= listFilms %></h1>
+</div>
+
+</body>
+
+<%- include('./../template/footer'); %>
