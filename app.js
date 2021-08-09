@@ -9,7 +9,10 @@ const PORT = process.env.PORT || 3000;
 
 let file = fs.readFileSync('user-mongodb.json');
 let dataUser = JSON.parse(file);
-console.log(process.env.PASSWORD);
+// console.log(process.env.USER);
+// console.log(process.env.PASSWORD);
+// console.log(process.env.DBNAME);
+// console.log(process.env.PORT);
 const userAdmin = dataUser.user;
 const password = dataUser.password;
 const dbName = dataUser.dbName;
@@ -28,8 +31,9 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 // Routing
 // The order is important.
-app.use('/films', require('./router/films'));
+
 app.use('/', require('./router/routerPaths'));
+app.use('/films', require('./router/films'));
 
 
 app.listen(PORT, ()=> console.log(`Express is listening at http://localhost:${PORT}`));
