@@ -4,10 +4,10 @@ const router = express.Router();
 const Film = require('./../models/film');
 
 router.get('/', async (request, response) => {
-    
+
     try {
-        // const films = await Film.find();
-        // console.log(films);
+        const films = await Film.find();
+        console.log(films);
 
         response.render('films', {listFilms: 'HERE list films'});
     } catch (e) {
