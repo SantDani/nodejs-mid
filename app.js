@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const {response} = require("express");
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,19 +9,16 @@ const PORT = process.env.PORT || 3000;
 
 let file = fs.readFileSync('user-mongodb.json');
 let dataUser = JSON.parse(file);
-// console.log(dataUser);
+console.log(process.env.PASSWORD);
 const userAdmin = dataUser.user;
 const password = dataUser.password;
 const dbName = dataUser.dbName;
 
-const uri = `mongodb+srv://${userAdmin}:${password}@cluster-free.5gk0p.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster-free.5gk0p.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
 
 mongoose.connect(uri, {useNewUrlParser: true , useUnifiedTopology: true})
     .then(() => console.log('Log in in MongoDB !!!'))
     .catch(e => console.error('error login in MongoDB ', e));
-
-
-
 
 
 // Main Templates - EJS
