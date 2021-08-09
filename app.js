@@ -1,6 +1,24 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const fs = require('fs');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+
+let file = fs.readFileSync('user-mongodb.json');
+let dataUser = JSON.parse(file);
+// console.log(dataUser);
+const userAdmin = dataUser.user;
+const password = dataUser.password;
+const dbName = dataUser.dbName;
+
+const uri = `mongodb+srv://${userAdmin}:${password}@cluster-free.5gk0p.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+
+mongoose.connect(uri, {useNewUrlParser: true , useUnifiedTopology: true})
+    .then(() => console.log('Log in in MongoDB !!!'))
+    .catch(e => console.error('error login in MongoDB ', e));
+
 
 // Main Templates - EJS
 app.set('view engine', 'ejs');
