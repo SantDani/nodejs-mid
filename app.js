@@ -7,15 +7,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
-let file = fs.readFileSync('user-mongodb.json');
-let dataUser = JSON.parse(file);
+// let file = fs.readFileSync('user-mongodb.json');
+// let dataUser = JSON.parse(file);
 // console.log(process.env.USER);
 // console.log(process.env.PASSWORD);
 // console.log(process.env.DBNAME);
 // console.log(process.env.PORT);
-const userAdmin = dataUser.user;
-const password = dataUser.password;
-const dbName = dataUser.dbName;
+// const userAdmin = dataUser.user;
+// const password = dataUser.password;
+// const dbName = dataUser.dbName;
 
 const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster-free.5gk0p.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
 
