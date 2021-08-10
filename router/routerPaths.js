@@ -11,7 +11,7 @@ router.get('/', async (request, response) => {
 router.get('/films', async (request, response) => {
     let films = []
     // response.render('films', {listFilms: 'HERE list films', films});
-
+    console.log('Someone is connect to films');
     try {
         const films = await Film.find();
         console.log(films);
@@ -22,7 +22,7 @@ router.get('/films', async (request, response) => {
         response.render('films', {listFilms: 'HERE list films', films});
     }
 
-    console.log('Someone is connect to films');
+
 
 });
 
