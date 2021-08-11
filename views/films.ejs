@@ -28,15 +28,17 @@
             </tr>
             </thead>
             <tbody>
-                <% films.forEach(film => { %>
+                <% for(let i=0; i < films.length; i++) { %>
                     <tr>
-                        <td><%= film._id%></td>
-                        <td><%= film.title%></td>
-                        <td><%= film.description%></td>
+                        <td><%= i%></td>
+                        <td><%= films[i].title%></td>
+                        <td><%= films[i].description%></td>
                         <td>
-                            <button class="btn btn-background">
-                                <span class="material-icons">edit</span>
-                            </button>
+                            <a href="films/<%= films[i]._id%>">
+                                <button class="btn btn-background">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                            </a>
                         </td>
                         <td>
                             <button class="btn btn-danger">
@@ -44,7 +46,7 @@
                             </button>
                         </td>
                     </tr>
-                <%})%>
+                <%}%>
 
             </tbody>
         </table>
