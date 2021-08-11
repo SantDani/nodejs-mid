@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Film = require('./../models/film');
+const {request, response} = require("express");
 
 router.get('/', async (request, response) => {
    response.render('index', {title : 'Title Home'});
@@ -21,10 +22,19 @@ router.get('/films', async (request, response) => {
         console.log(e);
         response.render('films', {listFilms: 'HERE list films', films});
     }
-
-
-
 });
+
+router.get('/crear-pelicula', (request, response)=> {
+    response.render('create-film', {title : 'Create Film'});
+})
+
+router.post('/create-film', async (request, response)=> {
+    // response.render('create-film', {title : 'Create Film'});
+    const body = request.body;
+
+    console.log('Petition FORM')
+    console.log(body);
+})
 
 router.get('/nosotros', (req, res) => {
     res.render('about', {title: 'Nosotros EJS'});
