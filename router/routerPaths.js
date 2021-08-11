@@ -40,10 +40,10 @@ router.post('/create-film', async (request, response)=> {
 
         console.log('film new', film);
         /**
-         *  film.save() is possible because we create the schema Film wih mongoose
+         *  Film.create(body) is possible because we create the schema Film with mongoose
          */
-        await film.save();
-       
+        await Film.create(body);
+
         response.redirect('films');
     }catch (e) {
         console.error(e);
