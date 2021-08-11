@@ -24,7 +24,7 @@ router.get('/films', async (request, response) => {
     }
 });
 
-router.get('/crear-pelicula', (request, response)=> {
+router.get('/create-film', (request, response)=> {
     response.render('create-film', {title : 'Create Film'});
 })
 
@@ -34,6 +34,20 @@ router.post('/create-film', async (request, response)=> {
 
     console.log('Petition FORM')
     console.log(body);
+
+    try{
+        const film = new Film(body);
+
+        console.log('film new', film);
+        /**
+         *  film.save() is possible because we create the schema Film wih mongoose
+         */
+        await film.save();
+       
+        response.redirect('films');
+    }catch (e) {
+        console.error(e);
+    }
 })
 
 router.get('/nosotros', (req, res) => {
