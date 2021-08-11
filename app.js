@@ -24,6 +24,15 @@ app.use(express.static(__dirname + '/public'));
 // app.use('/films', require('./router/films'));
 app.use('/', require('./router/routerPaths'));
 app.use('/films', require('./router/films'));
+app.put('/update/:id', ()=>{
+    console.log('update de app');
+
+    const id = req.params.id;
+    const body = req.body;
+
+    console.log(id)
+    console.log('body', body);
+})
 
 // Default rute
 app.use((req, res, next) => {

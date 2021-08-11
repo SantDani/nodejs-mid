@@ -6,7 +6,7 @@
 <div class="d-flex justify-content-around  p-3 ">
 
     <h1><%= listFilms %></h1>
-    <a href="/films/create-film">
+    <a href="films/create-film">
         <button type="button" class="btn btn-light btn-lg">Add
             <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
         </button>
@@ -41,7 +41,8 @@
                             </a>
                         </td>
                         <td>
-                            <button class="btn btn-danger">
+                            <button id="<%= films[i]._id%>"
+                                    class="btn btn-danger">
                                 <span class="material-icons">delete</span>
                             </button>
                         </td>
@@ -59,3 +60,33 @@
 </body>
 
 <%- include('./../template/footer'); %>
+
+<script>
+    const deleteButtons = document.querySelectorAll('.btn.btn-danger')
+    console.log(deleteButtons);
+
+    deleteButtons.forEach(btt =>{
+        btt.addEventListener('click', async ()=> {
+            console.log(btt.id);
+            try{
+                const data = await fetch(`/films/${btt.id}`, {method: 'delete'});
+                // wait to response
+                const response = await data.json();
+                console.log(response);
+
+                if(response.status){
+                    // window.location.herf = '/films';
+                    location.reload();
+
+                }else{
+                    console.log(response)
+                }
+            }catch (e) {
+                console.error(e)
+            }
+        });
+    })
+
+
+
+</script>

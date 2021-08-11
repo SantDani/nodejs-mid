@@ -14,15 +14,19 @@
             </div>
             <div class="card-body text-black">
 
-                <form action="/films/create-film" method="POST">
+                <form action="/update/<%= film._id%>" method="PUT">
                     <div class="form-group">
                         <label for="title">Title Film</label>
                         <input name="title" type="text" class="form-control" id="title"
-                               placeholder="Enter title">
+                               placeholder="Enter title"
+                               value="<%= film.title%>"
+                        >
                     </div>
                     <div class="form-group pt-3">
                         <div class="form-floating">
-                            <textarea name="description" class="form-control"  id="description"></textarea>
+                            <textarea name="description" class="form-control"  id="description"
+
+                            ><%= film.description%></textarea>
                             <label for="description">Description</label>
                         </div>
                     </div>
