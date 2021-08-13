@@ -18,12 +18,11 @@ const PORT = process.env.PORT || 3000;
 // HBS - template engine
 // const hbs = require('hbs');
 const hbs = require('hbs');
-const {response, request} = require("express");
-hbs.registerPartial(__dirname + '/views/partials', function (err) {});
+hbs.registerPartials(__dirname + '/views/partials', function (err) {});
 app.set('view engine', 'hbs');
-app.set('views', __dirname + '/views_hbs');
+app.set('views', __dirname + '/views');
 
-
+// for CSS and JS
 app.use(express.static(__dirname + '/public'));
 // Routing
 // The order is important.
