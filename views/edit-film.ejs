@@ -14,13 +14,12 @@
             </div>
             <div class="card-body text-black">
 
-                <form action="/update/<%= film._id%>" method="PUT">
+                <form id="edit" action="/update/<%= film._id%>" method="PUT" data-id="<%= film._id%>">
                     <div class="form-group">
                         <label for="title">Title Film</label>
                         <input name="title" type="text" class="form-control" id="title"
                                placeholder="Enter title"
-                               value="<%= film.title%>"
-                        >
+                               value="<%= film.title%>">
                     </div>
                     <div class="form-group pt-3">
                         <div class="form-floating">
@@ -39,3 +38,38 @@
 </body>
 
 <%- include('./../template/footer'); %>
+
+<script>
+    try{
+        const formEdit = document.querySelector('#edit');
+
+        formEdit.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = formEdit.elements['title'].value;
+            const description = formEdit.elements['description'].value;
+            const idFilm = formEdit.dataset.id;
+            console.log('log - ', name);
+            console.log('log - ', description);
+            console.log('log - ', idFilm);
+
+            // Send Request
+            const data = await fetch(`/films/${idFilm}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({name, description})
+            });
+            // Wait a response from backend
+            const response = await data.json();
+
+            if(response.status){
+                window.location.herf ='/films';
+            } else {
+                console.log(response);
+            }
+        });
+    }catch (e){
+        console.error(e);
+    }
+</script>
