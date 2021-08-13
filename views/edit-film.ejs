@@ -1,0 +1,75 @@
+
+<%- include('./../template/header', {titleWeb: 'Index EJS'}); %>
+<body class="container-fluid p-0  background-default text-white ">
+    <%- include('./../template/navbar'); %>
+
+    <div class="d-flex justify-content-center  ">
+        <h1><%= title %></h1>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <div class="card">
+            <div class="card-header text-black">
+                Formulario
+            </div>
+            <div class="card-body text-black">
+
+                <form id="edit" action="/update/<%= film._id%>" method="PUT" data-id="<%= film._id%>">
+                    <div class="form-group">
+                        <label for="title">Title Film</label>
+                        <input name="title" type="text" class="form-control" id="title"
+                               placeholder="Enter title"
+                               value="<%= film.title%>">
+                    </div>
+                    <div class="form-group pt-3">
+                        <div class="form-floating">
+                            <textarea name="description" class="form-control"  id="description"
+
+                            ><%= film.description%></textarea>
+                            <label for="description">Description</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<%- include('./../template/footer'); %>
+
+<script>
+    try{
+        const formEdit = document.querySelector('#edit');
+
+        formEdit.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = formEdit.elements['title'].value;
+            const description = formEdit.elements['description'].value;
+            const idFilm = formEdit.dataset.id;
+            console.log('log - ', name);
+            console.log('log - ', description);
+            console.log('log - ', idFilm);
+
+            // Send Request
+            const data = await fetch(`/films/${idFilm}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({name, description})
+            });
+            // Wait a response from backend
+            const response = await data.json();
+
+            if(response.status){
+                window.location.herf ='/films';
+            } else {
+                console.log(response);
+            }
+        });
+    }catch (e){
+        console.error(e);
+    }
+</script>

@@ -3,8 +3,17 @@
 <body class="container-fluid p-0  background-default text-white">
 <%- include('./../template/navbar'); %>
 
-<div class="d-flex justify-content-center  ">
+<div class="d-flex justify-content-around  p-3 ">
+
     <h1><%= listFilms %></h1>
+    <a href="films/create-film">
+        <button type="button" class="btn btn-light btn-lg">Add
+            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+        </button>
+    </a>
+</div>
+<div class="d-flex justify-content-around">
+
 </div>
 <div class="d-flex justify-content-center ">
     <% if(films.length > 0) {%>
@@ -14,18 +23,31 @@
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
                 <th scope="col">Description</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
-
-
-                <% films.forEach(film => { %>
+                <% for(let i=0; i < films.length; i++) { %>
                     <tr>
-                        <td><%= film._id%></td>
-                        <td><%= film.title%></td>
-                        <td><%= film.description%></td>
+                        <td><%= i%></td>
+                        <td><%= films[i].title%></td>
+                        <td><%= films[i].description%></td>
+                        <td>
+                            <a href="films/<%= films[i]._id%>">
+                                <button class="btn btn-background">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            <button id="<%= films[i]._id%>"
+                                    class="btn btn-danger">
+                                <span class="material-icons">delete</span>
+                            </button>
+                        </td>
                     </tr>
-                <%})%>
+                <%}%>
 
             </tbody>
         </table>
@@ -38,3 +60,33 @@
 </body>
 
 <%- include('./../template/footer'); %>
+
+<script>
+    const deleteButtons = document.querySelectorAll('.btn.btn-danger')
+    console.log(deleteButtons);
+
+    deleteButtons.forEach(btt =>{
+        btt.addEventListener('click', async ()=> {
+            console.log(btt.id);
+            try{
+                const data = await fetch(`/films/${btt.id}`, {method: 'delete'});
+                // wait to response
+                const response = await data.json();
+                console.log(response);
+
+                if(response.status){
+                    // window.location.herf = '/films';
+                    location.reload();
+
+                }else{
+                    console.log(response)
+                }
+            }catch (e) {
+                console.error(e)
+            }
+        });
+    })
+
+
+
+</script>
