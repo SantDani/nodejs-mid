@@ -8,8 +8,12 @@ router.get('/', async (request, response) => {
     // response.render('films', {listFilms: 'HERE list films', films});
     console.log('Someone is connect to films');
     try {
-        const films = await Film.find();
+        let films = await Film.find();
         // console.log(films);
+
+        if(!films){
+            films = []
+        }
 
         response.render('films', {listFilms: 'List films', films});
     } catch (e) {

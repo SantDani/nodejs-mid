@@ -4,8 +4,8 @@ const Film = require('./../models/film');
 const {request, response} = require("express");
 
 router.get('/', async (request, response) => {
-   response.render('films', {title : 'Title Home'});
-    console.log('Someone is connect to Home');
+    
+    response.redirect('/films');
 
 });
 
