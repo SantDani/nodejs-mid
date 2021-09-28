@@ -47,7 +47,7 @@ router.get('/create-film', async (request, response)=> {
     try{
         console.log('Create film')
         response.render('create-film', {
-            title : 'Create Film 2'});
+            title : 'Create Film'});
     }catch (e){
         console.error(e);
     }
@@ -64,7 +64,7 @@ router.get('/:id' , async (request, response) => {
         const filmDB = await Film.findOne({_id: id});
         // console.log('FIND = ', filmDB);
         response.render('edit-film', {
-            title : 'Edit film easy',
+            title : 'Edit film',
             film: filmDB,
 
             // error: false
