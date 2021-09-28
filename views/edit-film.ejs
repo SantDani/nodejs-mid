@@ -63,10 +63,13 @@
             // Wait a response from backend
             const response = await data.json();
 
+            console.log('log - response', response);
             if(response.status){
-                window.location.herf ='/films';
+                // window.location.herf ='/films';
+                window.location = '/films';
+                console.log('log - response to films TRUE');
             } else {
-                console.log(response);
+                console.log('log - response else', response);
             }
         });
     }catch (e){
