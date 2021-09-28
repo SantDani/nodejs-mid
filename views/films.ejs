@@ -6,9 +6,9 @@
 <div class="d-flex justify-content-around  p-3 ">
 
     <h1><%= listFilms %></h1>
-    <a href="films/create-film">
-        <button type="button" class="btn btn-light btn-lg">Add
-            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+    <a href="films/create-film" style="text-decoration: none;">
+        <button type="button" class="btn btn-light" style="display: flex;">
+            <span class="material-icons" style="font-size: 2.5rem;">add_circle_outline</span>
         </button>
     </a>
 </div>
@@ -31,6 +31,7 @@
                 <% for(let i=0; i < films.length; i++) { %>
                     <tr>
                         <td><%= i%></td>
+                       <!-- <td><%= films[i]._id%></td>-->
                         <td><%= films[i].title%></td>
                         <td><%= films[i].description%></td>
                         <td>
@@ -63,7 +64,7 @@
 
 <script>
     const deleteButtons = document.querySelectorAll('.btn.btn-danger')
-    console.log(deleteButtons);
+    //console.log(deleteButtons);
 
     deleteButtons.forEach(btt =>{
         btt.addEventListener('click', async ()=> {

@@ -11,10 +11,10 @@ router.get('/', async (request, response) => {
         const films = await Film.find();
         // console.log(films);
 
-        response.render('films', {listFilms: 'HERE list films', films});
+        response.render('films', {listFilms: 'List films', films});
     } catch (e) {
         console.log(e);
-        response.render('films', {listFilms: 'HERE list films', films});
+        response.render('films', {listFilms: 'List films', films});
     }
 });
 
@@ -22,7 +22,7 @@ router.post('/', async (request, response)=> {
     const body = request.body;
 
     console.log('Petition Add new item');
-    // console.log(body);
+    console.log(body);
 
     try{
         const film = new Film(body);
@@ -43,7 +43,7 @@ router.get('/create-film', async (request, response)=> {
     try{
         console.log('Create film')
         response.render('create-film', {
-            title : 'Create Film'});
+            title : 'Create Film 2'});
     }catch (e){
         console.error(e);
     }
@@ -65,6 +65,8 @@ router.get('/:id' , async (request, response) => {
 
             // error: false
         });
+
+
     } catch (e) {
         console.log(e);
     }
@@ -102,8 +104,10 @@ router.put('/:id', async (request, response) =>{
         const id = request.params.id;
         const body = request.body;
 
-        // console.log(id)
-        // console.log('body', body);
+        // console.log('log - id', id)
+        // console.log('log - body', body);
+
+        // const film = new Film(body);
 
         try{
             const filmDB = await Film.findByIdAndUpdate(
@@ -118,13 +122,14 @@ router.put('/:id', async (request, response) =>{
                 status: true,
                 message: 'Film was updated'
             });
+
         }catch (e) {
             console.error(e);
 
             response.json({
                 status: false,
                 message: 'Film can not update'
-            })
+            });
         }
     }catch (e) {
         console.error(e);

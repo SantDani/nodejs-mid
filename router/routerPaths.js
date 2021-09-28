@@ -22,6 +22,4 @@ router.get('/contacto', (req, res) => {
 });
 
 
-
-
 module.exports = router;

@@ -30,7 +30,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-3">Update</button>
                 </form>
             </div>
         </div>
@@ -45,12 +45,12 @@
 
         formEdit.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const name = formEdit.elements['title'].value;
+            const title = formEdit.elements['title'].value;
             const description = formEdit.elements['description'].value;
             const idFilm = formEdit.dataset.id;
-            console.log('log - ', name);
-            console.log('log - ', description);
-            console.log('log - ', idFilm);
+            // console.log('log - name', name);
+            // console.log('log - description', description);
+            // console.log('log - id', idFilm);
 
             // Send Request
             const data = await fetch(`/films/${idFilm}`, {
@@ -58,18 +58,16 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({name, description})
+                body: JSON.stringify({title, description})
             });
             // Wait a response from backend
             const response = await data.json();
 
-            console.log('log - response', response);
             if(response.status){
                 // window.location.herf ='/films';
                 window.location = '/films';
-                console.log('log - response to films TRUE');
             } else {
-                console.log('log - response else', response);
+                // console.log('log - response else', response);
             }
         });
     }catch (e){
